@@ -11,32 +11,56 @@
 \end{problema}
 
 \begin{proof}
-	content...
+	Por hipótesis, sabemos que: $f\geq 0$, $f$ es continua en $[a,b]\implies $ por teorema $f\in R[a,b]$ y $\int_a^b f=0$. 
 \end{proof}
+
+
+%------------
+
+
 
 \begin{problema}
 	Sean $f, g$ y $h$ funciones acotadas en $[a, b]$.
 	\begin{enumerate}
 		\item Demuestre que si $h(x)=0$ en $[a, b]$, excepto en un número finito de puntos de $[a, b]$, entonces $h$ es Riemann integrable en $[a, b]$ y se tiene que $\int_{a}^{b} h=0$.
 		\begin{proof}
-			content...
+			Por hipótesis, tenemos un número finito de puntos en donde $h(x)\neq 0$ en $[a,b]$. Supóngase que este número finito de puntos se puede expresar como $\{s_1,s_2,s_3,\cdots, s_k\}$.  Nótese que $|h(x)|\leq M$. 
 		\end{proof}
 		\item Demuestre que si $f$ y $g$ son Riemann integrables en $[a, b]$ y $f(x)=g(x)$ en $[a, b]$, excepto en un número finito de puntos de ese intervalo, entonces se tiene que:
 		$$
 		\int_{a}^{b} f=\int_{a}^{b} g
 		$$
 		\begin{proof}
-			content...
+		Por hipótesis, tenemos un número finito de puntos en donde $f(x)\neq g(x)$ en $[a,b]$. Supóngase que este número finito de puntos se puede expresar como $\{s_1,s_2,s_3,\cdots, s_k\}$. Nótese que $|f(x)|\leq M$ y $|g(x)|\leq M$. 
 		\end{proof}
 	\end{enumerate}
 \end{problema}
+
+
+
+
+
+
+
+%------------
+
+
 \begin{problema}
 	Sea $f$ una función acotada en $[a, b]$. Suponga que $f$ es integrable en todo intervalo de la forma $[c, d]$, con $a<c<d<b$. Demuestre que $f$ es integrable en $[a, b]$.
 \end{problema}
 \begin{proof}
-	content...
+	C.
 \end{proof}
 
+
+
+
+
+
+
+
+
+%------------
 \begin{problema}
 	 Considere $f$ la función definida por:
 	$$
@@ -48,16 +72,77 @@
 	¿Es $f$ integrable en $[0,1]$ ?
 \end{problema}
 \begin{sol}
-	content...
+	Para determinar que $f$ es integrable en $[0,1]$, debemos comprobar que: 
+	$$\underline{\int_0^1}f=\overline{\int_0^1}f=\int_0^1 f.$$
+	Entonces, 
+	\begin{align}
+		U(P,f) &= \sum_{k=1}^{k} M_k(f)\Delta x_k = \sum_{k=1}^{k} (x)\Delta x_k= x\sum_{k=1}^{k}\Delta x_k= x(1-0)= x.\\
+	\begin{split}	L(P,f) & = 
+			\sum_{k=1}^{k} m_k(f)\Delta x_k = \sum_{k=1}^{k} (1-x)\Delta x_k=\sum_{k=1}^{k} \Delta x_k- x\sum_{k=1}^{k}\Delta x_k=\\&= (1-0)-x(1-0)= 1-x.
+		\end{split}
+	\end{align}
+Por (1) sabemos que, 
+$$\overline{\int_0^1}f= \inf_{P\in P[a,b]}\{U(P,f)\}=1-x.$$
+
+Por (2) sabemos que, 
+$$\underline{\int_0^1}f= \sup_{P\in P[a,b]}\{L(P,f)\}=x.$$
+
+$ \implies \underline{\int_0^1}f\neq \overline{\int_0^1}f. \ \therefore f$ no es integrable en $[0,1]$. 
 \end{sol}
+\begin{cajita}
+	Un caso particular, como se demostró en clase, si $x=0$ (función de Dirichlet) entonces no es integrable.
+\end{cajita}
+%------------
 \begin{problema}
 	 Suponga que $f$ es una función acotada de valores reales sobre $[a, b]$, y que $f^{2} \in R[a, b]$. ¿Implica lo anterior que $f \in R[a, b]$ ?
 \end{problema}
-\begin{proof}
-	content...
-\end{proof}
+\begin{sol}
+	Procederemos con un contraejemplo. Sean $f^2$ y $f$ definidos sobre $[a,b]$, tal que: 
+	$$f(x)=\begin{cases}
+		x, & x\in \mathbb{Q}\\
+		-x, & x\in \mathbb{I}rr\\
+	\end{cases}\implies f^2(x)= \begin{cases}
+	x^2, & x\in \mathbb{Q}\\
+	x^2, & x\in \mathbb{I}rr.\\
+\end{cases}$$
+
+\linita 
+
+Comprobamos que $f^2(x)\in R[a,b]$, 
+	\begin{align}
+	U(P,f) &= \sum_{k=1}^{k} M_k(f)\Delta x_k = \sum_{k=1}^{k} (x^2)\Delta x_k= x^2\sum_{k=1}^{k}\Delta x_k= x^2(1-0)= x^2.\\
+	L(P,f) &= \sum_{k=1}^{k} m_k(f)\Delta x_k = \sum_{k=1}^{k} (x^2)\Delta x_k= x^2\sum_{k=1}^{k}\Delta x_k= x^2(1-0)= x^2.
+\end{align}
+Por (1) sabemos que, 
+$$\overline{\int_0^1}f= \inf_{P\in P[a,b]}\{U(P,f)\}=x^2.$$
+
+Por (2) sabemos que, 
+$$\underline{\int_0^1}f= \sup_{P\in P[a,b]}\{L(P,f)\}=x^2.$$
+
+$$\implies \underline{\int_0^1}f=\overline{\int_0^1}f. \ \therefore f^2(x)\in R[a,b]$$
+
+\linita 
+
+Ahora bien, comprobamos que $f(x)\in R[a,b]$, 
 
 
+	\begin{align}
+	U(P,f) &= \sum_{k=1}^{k} M_k(f)\Delta x_k = \sum_{k=1}^{k} (x^2)\Delta x_k= x\sum_{k=1}^{k}\Delta x_k= x(1-0)= x.\\
+	L(P,f) &= \sum_{k=1}^{k} m_k(f)\Delta x_k = \sum_{k=1}^{k} (-x)\Delta x_k= -x\sum_{k=1}^{k}\Delta x_k= -x(1-0)= -x.
+\end{align}
+Por (1) sabemos que, 
+$$\overline{\int_0^1}f= \inf_{P\in P[a,b]}\{U(P,f)\}=x.$$
+
+Por (2) sabemos que, 
+$$\underline{\int_0^1}f= \sup_{P\in P[a,b]}\{L(P,f)\}=-x.$$
+
+$$\implies \underline{\int_0^1}\neq \overline{\int_0^1}f.  \ \therefore  f\not\in R[0,1].$$
+
+\linita 
+
+Por lo que podemos concluir que si $f$ es una función acotada de valores reales sobre $[a, b]$, y que $f^{2} \in R[a, b]$, no necesariamente implica que $f \in R[a, b]$. 
+
+\end{sol}
 
 
 
