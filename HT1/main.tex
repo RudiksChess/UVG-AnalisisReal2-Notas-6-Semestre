@@ -11,7 +11,12 @@
 \end{problema}
 
 \begin{proof}
-	Por hipótesis, sabemos que: $f\geq 0$, $f$ es continua en $[a,b]\implies $ por teorema $f\in R[a,b]$ y $\int_a^b f=0$. 
+	Por reducción al absurdo, supóngase que $f(c)\neq 0\ni \exists c\in [a,b] $. Por hipótesis, sabemos que $f\geq 0$, entonces $f(c)>0$. Ahora bien, sabemos que $f$ es una función continua. $\implies$ Por la definición, $f$ es continua en $c$, dado un $f(c)>\varepsilon >0$, existe un $\delta >0$ tal que si $x$ es un punto en $[a,b]$ que satisface $|x-c|<\delta \implies |f(x)-f(c)|<\epsilon$. $\implies$ Aplicamos el teorema aditivo\footnote{Teorema 7.2.13 de Introduction to Real Analysis de Bartle \& Sherbert - 4 edición.} tal que 
+	
+	$$\int_a^b f= \int_a^{c-\delta } f +\int_{c-\delta}^{c+\delta}+\int_{c+\delta}^{b}>0 \quad \text{}$$
+	
+Ahora bien, sabemos $f>0$, ya que $f(c)-\varepsilon>0$, pero esto quiere de $f(x)dx>0 $ y $f(x)dx=0 (\to\gets)$. $\therefore \ f(x)=0, \forall x\in [a,b]$. 
+
 \end{proof}
 
 
@@ -24,14 +29,43 @@
 	\begin{enumerate}
 		\item Demuestre que si $h(x)=0$ en $[a, b]$, excepto en un número finito de puntos de $[a, b]$, entonces $h$ es Riemann integrable en $[a, b]$ y se tiene que $\int_{a}^{b} h=0$.
 		\begin{proof}
-			Por hipótesis, tenemos un número finito de puntos en donde $h(x)\neq 0$ en $[a,b]$. Supóngase que este número finito de puntos se puede expresar como $\{s_1,s_2,s_3,\cdots, s_k\}$.  Nótese que $|h(x)|\leq M$. 
+			Por hipótesis, tenemos un número finito de puntos en donde $h(x)\neq 0$ en $[a,b]$. Supóngase que este número finito de puntos se puede expresar como una partición $P_n=\{s_0,s_1,s_2,s_3,\cdots, s_k\}$ tal que $a=s_0<s_1<\cdots <s_n=b$. Nótese que $|h(x)|\leq M$. Para $P_n$, proponemos encontrar su integral inferior y superior tal que 
+			
+			\begin{align*}
+				\sup\{L(P,f)\}&=\sup\{\sum_{i=1}^{n} m_i(h)\Delta x_k\}\\
+				\inf\{M(P,f)\}&=\inf\{\sum_{i=1}^{n} M_i(g)\Delta x_k\}
+			\end{align*}
+			
+			 $\implies h $ es Riemann integrable, entonces por teorema, sabemos que existe una sucesión de particiones $\left(P_{n}\right), P_{n} \in$ $P[a, b], \forall n \in \mathbb{Z}^{+} \ni \lim _{n \rightarrow \infty}\left[U\left(f, P_{n}\right)-L\left(f, P_{n}\right)\right]=0 .$ En este caso,
+			 $$
+			 \int_{a}^{b} f=\lim _{n \rightarrow \infty} U\left(f, P_{n}\right)=\lim _{n \rightarrow \infty} L\left(f, P_{n}\right).
+			 $$
+			 
+			 $$\therefore \ \int_{a}^{b} h=0.$$
 		\end{proof}
 		\item Demuestre que si $f$ y $g$ son Riemann integrables en $[a, b]$ y $f(x)=g(x)$ en $[a, b]$, excepto en un número finito de puntos de ese intervalo, entonces se tiene que:
 		$$
 		\int_{a}^{b} f=\int_{a}^{b} g
 		$$
 		\begin{proof}
-		Por hipótesis, tenemos un número finito de puntos en donde $f(x)\neq g(x)$ en $[a,b]$. Supóngase que este número finito de puntos se puede expresar como $\{s_1,s_2,s_3,\cdots, s_k\}$. Nótese que $|f(x)|\leq M$ y $|g(x)|\leq M$. 
+	  Dígase que tenemos una partición $P_\varepsilon=\{x_0,x_1,x_2,x_3,\cdots, x_k\}$ tal que $a=x_0<x_1<\cdots <x_n=b$. Supóngase que el número finito de puntos en donde $f(x)\neq g(x)$ en $[a,b]$, se puede expresar como una partición $P_\varepsilon^*=\{s_0,s_1,s_2,s_3,\cdots, s_k\}$ tal que $a=s_0<s_1<\cdots <s_k=b$ y otra partición $P_\varepsilon^{**}$ que agrupa a los puntos $f(x)=g(x)$. Entonces, $P_\varepsilon=P_\varepsilon^*\cup P_\varepsilon^{**}$. Nótese que $|f(x)|\leq M$ y $|g(x)|\leq M=\fbox{ $\sup\{g(x)-g(y):x,y\in [a,b]\}$ }$. $\implies$ Como sabemos que $f$ y $g$ son Riemann integrables, por el Criterio de Cauchy, $\forall \varepsilon >0 \exists P_\varepsilon \in P[a,b] \ni P_\varepsilon \subset P$, se tiene que: 
+	$$U(P_\varepsilon,f)-L(P_\varepsilon,f)<\varepsilon/2.$$
+	
+	Supóngase además que los intervalos de $P_\varepsilon$ están definidos como $\Delta x_k< \varepsilon/ (2nM)$. Entonces, 
+	
+	\begin{align*}
+		\begin{aligned}
+			U\left(g, P_{\epsilon}\right)-L\left(g, P_{\epsilon}\right) &=U\left(g, P_{\epsilon}^{*}\right)-L\left(g, P_{\epsilon}^{*}\right)+U\left(g, P_{\epsilon}^{**}\right)-L\left(g, P_{\epsilon}^{**}\right) \\
+			&=U\left(g, P_{\epsilon}^{*}\right)-L\left(g, P_{\epsilon}^{*}\right)+U\left(f, P_{\epsilon}^{**}\right)-L\left(f, P_{\epsilon}^{**}\right) \\
+			&<\frac{\epsilon}{2 nM} n M+\frac{\epsilon}{2} \\
+			&=\epsilon
+		\end{aligned}
+	\end{align*}
+
+	$$
+	\therefore	\int_{a}^{b} f=\int_{a}^{b} g
+	$$
+	
 		\end{proof}
 	\end{enumerate}
 \end{problema}
@@ -49,7 +83,38 @@
 	Sea $f$ una función acotada en $[a, b]$. Suponga que $f$ es integrable en todo intervalo de la forma $[c, d]$, con $a<c<d<b$. Demuestre que $f$ es integrable en $[a, b]$.
 \end{problema}
 \begin{proof}
-	C.
+	Por hipótesis, conocemos que $f$ está acotada en $[a,b]$. Además, $f$ es integrable en todo intervalo de la forma $[c,d]$, en donde $a<c<d<b$. Proponemos una partición $P=\{x_0,x_1,\cdots, x_n\} \ni a=x_0<x_1<x_2<x_3<\cdots <x_n=b$. $\implies$ Todo intervalo de la forma $[c,d]$, que es integrable, se puede expresar como $\{[x_{i-1},x_i]\}_{i=1}^n$. $\implies$ Previamente, definimos $a=x_0$ y $b=x_n$. Por el teorema aditivo\footnote{Teorema 7.2.13 de Introduction to Real Analysis de Bartle \& Sherbert - 4 edición.}, conocemos: 
+	$$\int_a^b=\int_a^c+\int_{c .}^b$$
+	$\implies$ Si aplicamos el teorema aditivo a todos los intervalos sucesivamente, tenemos
+	$$ \int_a^b=\int_{x_0}^{x_n}= \int_{x_0}^{x_1}+ \int_{x_1}^{x_n} f=\int_{x_0}^{x_1}f+\int_{x_1}^{x_2}f+\int_{x_2}^{x_n}f=\int_{x_0}^{x_1}f+\int_{x_1}^{x_2}f+\cdots + \int_{x_{n-1}}^{x_n}f.$$
+	\begin{align}
+		\implies \int_{x_0}^{x_n} f = \sum_{i=1}^{n} \int_{x_{i-1}}^{x_i}f.
+	\end{align}
+	$\implies$ Para demostrar que (1) es integrable en $f$ procederemos por inducción. 
+	
+	\linita 
+	
+	\fbox{Paso base}  $n=1$: 
+	
+	$$\int_{x_0}^{x_1} f = \int_{x_{0}}^{x_1}f \qquad (\text{Integrable por hipótesis.})$$
+	
+	\linita 
+	
+	\fbox{Paso inductivo}	Asumimos que (1) es verdadera para $n=k\geq 1$. Es decir,
+	
+	\begin{align*}
+		\int_{x_0}^{x_k} f = \sum_{i=1}^{k} \int_{x_{i-1}}^{x_i}f
+	\end{align*}
+	
+	 Entonces, ahora es necesario demostrar que si $n=k+1$, entonces
+	\begin{align*}
+		\int_{x_0}^{x_{k+1}} f = \sum_{i=1}^{k+1} \int_{x_{i-1}}^{x_i}f.
+	\end{align*}
+Por lo cual, 
+		\begin{align*}
+		\int_{x_0}^{x_{k+1}} f = \underbrace{\int_{x_0}^{x_{k}} f +\int_{x_k}^{x_{k+1}} f}_{\text{teorema aditivo}} =  \sum_{i=1}^{k} \int_{x_{i-1}}^{x_i}f+\int_{x_k}^{x_{k+1}}f=  \sum_{i=1}^{k+1} \int_{x_{i-1}}^{x_i}f. 
+	\end{align*}
+	$\therefore \ f$ es integrable en $[a,b]$. 
 \end{proof}
 
 
@@ -82,10 +147,10 @@
 		\end{split}
 	\end{align}
 Por (1) sabemos que, 
-$$\overline{\int_0^1}f= \inf_{P\in P[a,b]}\{U(P,f)\}=1-x.$$
+$$\overline{\int_0^1}f= \inf_{P\in P[0,1]}\{U(P,f)\}=0.$$
 
 Por (2) sabemos que, 
-$$\underline{\int_0^1}f= \sup_{P\in P[a,b]}\{L(P,f)\}=x.$$
+$$\underline{\int_0^1}f= \sup_{P\in P[0,1]}\{L(P,f)\}=1.$$
 
 $ \implies \underline{\int_0^1}f\neq \overline{\int_0^1}f. \ \therefore f$ no es integrable en $[0,1]$. 
 \end{sol}
@@ -144,6 +209,9 @@ Por lo que podemos concluir que si $f$ es una función acotada de valores reales
 
 \end{sol}
 
+\begin{cajita}
+	Un ejemplo sería $x=1$. 
+\end{cajita}
 
 
 %---------------------------
