@@ -1,0 +1,140 @@
+\input{Configuraciones/paquetes}
+
+%--------------------------
+
+\begin{document}
+\input{Configuraciones/nombres}
+%--------------------------
+\begin{problema}
+	Pruebe que si $f \in R[a, b]$ entonces $f^{2} \in R[a, b]$.
+\end{problema}
+\begin{dem}
+	Conocemos que $f\in R[a,b]$, por definición $f$  es acotada en $[a,b]$. $\implies \exists M>0 \ni |f|\leq M$. Por otra parte, nótese que $|f^2|= |f||f|\leq 2M$, por lo que $f^2$ también es acotada en $[a,b]$. Ahora bien, por el \textit{criterio de Cauchy} aplicado a $f$, sabemos que $\forall \textcolor{red}{\varepsilon/2M}>0, \exists P\in P[a,b]\ni$ $$U(P, f)- L(P, f)<\textcolor{red}{\varepsilon/2M}.$$ 
+	
+	\linita 
+	
+	Definamos la partición $P = a=x_0<x_1<x_2<\cdots< x_n=b$. Ahora  considérese, 
+	
+	$$M_k(f)=\sup\{f(x):x\in [x_{k-1}, x_k]\}\quad \text{y} \quad  m_k(f)=\inf\{f(x):x\in [x_{k-1}, x_k]\}$$
+	$$M_k^*(f^2)=\sup\{f^2(x):x\in [x_{k-1}, x_k]\}\quad \text{y} \quad  m_k^*(f^2)=\inf\{f^2(x):x\in [x_{k-1}, x_k]\}$$
+	
+	Arbitrariamente, tomamos $x,y\in [x_{k-1},x_k]$ tal que, 
+	\begin{gather}
+		\left|f^2(x)-f^2(y)\right|=|f(x)-f(y)||f(x)+f(y)|\leq 2 M|f(x)-f(y)|.
+	\end{gather}
+
+	
+	Nótese que, 
+	$$\left|f^2(x)-f^2(y)\right|\leq M_k^*(f^2)- m_k^*(f^2)$$
+	Además, 
+	$$\left|f(x)-f(y)\right|\leq M_k(f)- m_k(f)$$
+	Por (1) podemos concluir que, 
+	$$M_k^*(f^2)-m_k^*(f^2)\leq 2M[M_k(f)-m_k(f)]$$
+	\linita 
+	
+	Como queremos comprobar que $f^2$ es integrable, proponemos :
+	
+	
+	\begin{align*}
+		U(P, f^2)-L(P, f^2) &= \sum_{k=1}^n \left[M_k^*(f^2)-m_k^*(f^2)\right]\Delta x_k\\
+		&\leq 2M  \sum_{k=1}^n \left[M_k(f)-m_k(f)\right]\Delta x_k=\\
+		&=2M\left[U(P, f)- L(P, f)\right]<2M\frac{\varepsilon}{2M}=\varepsilon. 
+	\end{align*}
+
+$\therefore$ Por el \textit{criterio de Cauchy} $f^2\in R[a,b]$. 
+	
+\end{dem}
+
+
+
+
+
+
+%------------
+\begin{problema}
+	Indique si el enunciado a continuación es verdadero o falso, justificando su
+	respuesta:·"Si $f \geq 0$ en $[a, b], \mathrm{y}$ si la integral superior de $f$ se anula en $[a, b]$,
+	entonces $f \in R[a, b]$".
+\end{problema}
+\begin{dem}
+	Por hipótesis, tenemos que $f\geq 0$ y $\overline{\int_a^b}=0$ en el intervalo $[a,b]$. Por propiedad, sabemos que 
+	$$ \underline{\int_a^b}f\leq \overline{\int_a^b}f=0.$$
+	Pero, como sabíamos que $f\geq 0$, entonces: 
+	$$\underline{\int_a^b}f=0.$$
+	Por lo tanto, 
+	$$\underline{\int_a^b}f= \overline{\int_a^b}f =0, \qquad f\in R[a,b].$$ 
+\end{dem}
+
+%------------
+
+
+
+
+\begin{problema}
+	 Sean $g \in R[a, b] ; f:[a, b] \rightarrow \mathbb{R}$ una función acotada; $\left(x_{n}\right)$ una sucesión de puntos
+	en $[a, b]$, tales que $f(x)=g(x)$, para todos los $ x \in[a, b], x \neq x_{n} .$ Presente un ejemplo que muestre que $f$ no necesariamente es Riemann integrable.
+\end{problema}
+\begin{sol}
+	Proponemos un intervalo $[0,1]$, tal que:
+	\begin{enumerate}
+		\item $g(x)=0, \forall x\in [0,1]\ni \int_0^1 g(x)=0$.
+		\item $(x_n)\in [0,1]$, donde $(x_n)$ es una sucesión de racionales.  
+	\end{enumerate}
+Supóngase que $f(x_n)=1$ y $f(x)=0$ si $x\neq x_n$. Por lo tanto, $\int_0^1 f(x)$ no existe y consecuentemente, no es Riemann integrable. 
+\end{sol}
+%------------
+
+
+
+
+
+
+
+
+
+\begin{problema}
+	Sea $f \in C[a, b]$, tal que $\int_{a}^{b} f=0 .$ Pruebe que existe $x_{0} \in[a, b] \ni f\left(x_{0}\right)=0$.
+\end{problema}
+\begin{dem}
+	Por reducción al absurdo, supóngase que $f(x)\neq0, \forall x\in [a,b]$. $\implies f>0$ o $f<0$.  Además, conocemos que $f \in C[a, b]$, tal que $\int_{a}^{b} f=0$. Por la \textbf{HT 1}, conocemos si $f$ es continua, $f\geq 0$ y $\int_a^b f=0$; entonces $f(x)=0, \forall x\in[a,b]$. $(\to\gets)$ Por lo tanto, $$\exists x_0\in [a,b]\ni f(x_0)=0.$$
+\end{dem}
+%------------
+\begin{problema}
+	Si $f, g \in R[a, b]$, pruebe que $h(x)=\max \{f(x), g(x)\}$ y $k(x)=\min \{f(x), g(x)\}$
+	son Riemann-integrables en $[a, b]$. Además, compruebe que:
+	$$
+	\int_{a}^{b} h+\int_{a}^{b} k=\int_{a}^{b} f+\int_{a}^{b} g
+	$$
+\end{problema}
+\begin{dem}
+	Comenzaremos comprobando que $h(x)$ y $k(x)$ son integrables \footnote{Documentando ampliamente en la literatura,  $\max\{a,b\}=\frac{1}{2}(a+b+|a-b|)$ y $\min\{a,b\}=\frac{1}{2}(a+b-|a-b|)$}, haciéndole un cambio de forma a las expresiones
+	
+	\begin{align*}
+		h(x)&=\max\{f(x),g(x)\}= \frac{1}{2}(f(x)+g(x)+|f(x)-g(x)|)\\
+		k(x)&=\min\{f(x),g(x)\}= \frac{1}{2}(f(x)+g(x)-|f(x)-g(x)|)
+	\end{align*}
+	
+	Por hipótesis, conocemos que $f(x)$ y $g(x)$ son integrables. Previamente, ya se había demostrado que las sumas, el valor absoluto y la resta no afectan la integrabilidad de las funciones. Por lo tanto, $h(x)$ y $k(x)$ son integrables. 
+	
+	\bigbreak 
+	
+	Ahora bien, 
+	
+	\begin{align*}
+		\int_{a}^{b} h+\int_{a}^{b} k &=\int_{a}^{b}  \max\{f(x),g(x)\} +\int_{a}^{b} \min\{f(x),g(x)\}\\
+		&= \frac{1}{2}\int_a^b(f(x)+g(x)+|f(x)-g(x)|) + \frac{1}{2}\int_a^b(f(x)+g(x)-|f(x)-g(x)|)\\
+		\begin{split}
+			&= \frac{1}{2}\int_a^b f(x)+\frac{1}{2}\int_a^b g(x)+\frac{1}{2}\int_a^b |f(x)-g(x)|+\frac{1}{2}\int_a^b f(x)+\frac{1}{2}\int_a^b g(x)-\\ &-\frac{1}{2}\int_a^b |f(x)-g(x)|
+		\end{split}\\
+		&= \int_{a}^{b} f(x)+\int_{a}^{b} g(x).
+	\end{align*}
+\end{dem}
+%------------
+
+
+
+%---------------------------
+
+
+
+\end{document}
